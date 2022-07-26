@@ -7,7 +7,7 @@ import { scoreData } from "./scoreData";
 
 function ScoreBoard(props: any) {
 
-  const onClicked = (item: void) => {
+  const onClicked = (item: any) => {
     props.checkThis(item)
   }
 
@@ -16,15 +16,21 @@ function ScoreBoard(props: any) {
   return (
     <div style={{ textAlign: "center", marginTop: 20}}>
       <h3 className="title is-3">Siema</h3>
-      <Button onClick={onClicked}/>
+      {/* <Button onClick={()=>onClicked(item)}/> */}
       {scoreData.map((item, key) => {
         return (
           <React.Fragment key={key}>
             <div className="content is-normal">
-            <h1>{item.title}</h1>
             
+            <h1>{item.title}</h1>
+            <Button onClick={()=>onClicked(item)}/>
             <p>{item.text}</p>
             </div>
+            {props.change === item.title && (
+              <div>
+                <p>witam</p>
+              </div>
+            )}
             
           </React.Fragment>
         )
@@ -33,4 +39,6 @@ function ScoreBoard(props: any) {
   );
 }
 
-export default connect(null, actionCreators)(ScoreBoard);
+export default connect((param, store: any) => ({
+  change: store.change
+}), actionCreators)(ScoreBoard);
