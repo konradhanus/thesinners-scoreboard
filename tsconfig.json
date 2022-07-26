@@ -21,6 +21,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-  ]
+    "src",
+    "index.tsx"
+, "src/components/ScoreBoard/ScoreBoard.tsx"  ]
 }
