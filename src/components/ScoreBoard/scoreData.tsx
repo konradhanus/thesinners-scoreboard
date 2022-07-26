@@ -1,6 +1,10 @@
 export const scoreData = [
     {
         title: "Akcja 1: ",
-        text: "Siema, jestem w 1 akcji :)",
+        text: "Sukces!",
     },
+    {
+        title: "Akcja 2: ",
+        text: "Error!",
+    }
 ]; 

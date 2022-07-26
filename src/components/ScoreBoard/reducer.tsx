@@ -1,6 +1,6 @@
 import { DZIAŁA_TO } from "./action";
 
-const firststate = "Nie";
+const firststate = "Sukces!";
 
 export function changeValueReducer(state = firststate, action: any) {
   switch (action.type) {

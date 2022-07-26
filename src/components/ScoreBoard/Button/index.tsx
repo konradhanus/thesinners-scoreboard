@@ -6,7 +6,7 @@ interface ButtonProps {
 
 const Button = (props: ButtonProps) => {
   return (
-    <div className="mb-6">
+    <div>
       <button className="button is-success is-outlined" onClick={props.onClick}>
         Outlined
       </button>
