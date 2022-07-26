@@ -1,8 +1,8 @@
-export const DZIAŁA_TO = "@@SCOREBOARD/DZIAŁA_TO";
+export const CHANGE_VALUE = "@@SCOREBOARD/CHANGE_VALUE";
 
 export const actionCreators = {
   checkThis: (payload: any) => ({
-    type: DZIAŁA_TO,
+    type: CHANGE_VALUE,
     payload,
   }),
 };

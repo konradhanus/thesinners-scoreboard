@@ -1,19 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import ScoreBoard from './components/ScoreBoard';
-import reportWebVitals from './reportWebVitals';
-import getStore from './store';
-import './index.css';
-import { Provider } from 'react-redux';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import ScoreBoard from "./components/ScoreBoard";
+import reportWebVitals from "./reportWebVitals";
+import getStore from "./store";
+import "./index.css";
+import { Provider } from "react-redux";
+import { CssBaseline } from "@mui/material";
 
 export const store = getStore();
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <CssBaseline />
       <ScoreBoard />
     </Provider>
   </React.StrictMode>

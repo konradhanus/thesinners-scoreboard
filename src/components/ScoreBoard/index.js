@@ -1,95 +1,67 @@
 import React, { useState } from "react";
 import "./style.css";
-import Button from "./Button";
 import { connect } from "react-redux";
 import { actionCreators } from "./action";
 import { scoreData } from "./scoreData";
-import styled from 'styled-components';
-// import ChangeItem from "../Change/index";
+import ScoreTable from "./Table";
+import Button from "./Button";
+import IncrementButton from "../IncrementButton";
+import {
+  TableContainer,
+  Wrapper,
+  Increment,
+  MessageContainer,
+  StatusContainer,
+} from "./style";
 
 function ScoreBoard(props) {
   const [count, setCount] = useState(0);
-
-  // const handle = () => {
-  //   setName("Alicja");
-  // }
 
   const onClicked = (item) => {
     props.checkThis(item);
   };
 
-  console.log(onClicked, "klik");
-
-  const Wrapper = styled.div`
-  display: flex;
-  background: papayawhip;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  padding: 4em;
-  `;
-
-  const Increment = styled.div`
-  background: papayawhip;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 4em;
-  `;
-
-  const MessageContainer = styled.div`
-  display: flex;
-  padding: 4em;
-  justify-content: center;
-  align-items: center;
-  `;
-
+  console.log("Status: ", props.change);
+  console.log("Counter: ", count);
 
   return (
-    <Wrapper>
-      <Increment>
-      <h3 className="title is-3">{count}</h3>
-      <Button onClick={() => setCount(count + 1)} />
-      {/* <Button onClick={()=>onClicked(item)}/> */}
-      </Increment>
-      {scoreData.map((item, key) => {
-        return (
-          <React.Fragment key={key}>
-            <MessageContainer>
-              <h1>{item.title}</h1>
-              <Button onClick={() => onClicked(item)} />
-              {props.change === item.text ? (
-                <article className="message is-success">
-                  <div className="message-header">
-                    <p>Success</p>
-                    <button className="delete" aria-label="delete"></button>
-                  </div>
-                  <div className="message-body">
-                    {" "}
-                    <strong>Super Działa</strong>
-                  </div>
-                </article>
-              ) : (
-                (
-                  <article className="message is-danger">
-                    <div className="message-header">
-                      <p>Error</p>
-                      <button className="delete" aria-label="delete"></button>
-                    </div>
-                    <div className="message-body">
-                      {" "}
-                      <strong>Niestety error...</strong>
-                    </div>
-                  </article>
-                )
-              )}
-              
-              </MessageContainer>
-          </React.Fragment>
-        );
-      })}
-    </Wrapper>
+    <TableContainer>
+      <h1>ScoreBoard</h1>
+      <ScoreTable />
+      <Wrapper>
+        <Increment>
+          <IncrementButton
+            value="Zwiększ o 1"
+            onClick={() => setCount(count + 1)}
+          />
+          <h3 style={{ marginTop: 60, padding: 40, textAlign: "center" }} className="title is-3">
+            Twoja liczba: 
+            <br></br>
+            {count}
+          </h3>
+          <IncrementButton
+            value="Zmniejsz o 1"
+            onClick={() => setCount(count - 1)}
+          />
+        </Increment>
+        <MessageContainer>
+          {scoreData.map((item, key) => {
+            return (
+              <React.Fragment key={key}>
+                <StatusContainer>
+                  <Button
+                    value={item.value}
+                    checkThis
+                    change
+                    onClick={() => onClicked(item)}
+                  />
+                </StatusContainer>
+              </React.Fragment>
+            );
+          })}
+        </MessageContainer>
+      </Wrapper>
+    </TableContainer>
   );
 }
 

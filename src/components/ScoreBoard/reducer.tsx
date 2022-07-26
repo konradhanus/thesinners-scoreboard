@@ -1,11 +1,10 @@
-import { DZIAŁA_TO } from "./action";
+import { CHANGE_VALUE } from "./action";
 
-const firststate = "Sukces!";
-
-export function changeValueReducer(state = firststate, action: any) {
+const initialState = "Brak Informacji";
+export function changeValueReducer(state = initialState, action: any) {
   switch (action.type) {
-    case DZIAŁA_TO:
-      return action.payload.text;
+    case CHANGE_VALUE:
+      return action.payload.points;
 
     default:
       return state;
