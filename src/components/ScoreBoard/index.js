@@ -6,6 +6,8 @@ import { scoreData } from "./scoreData";
 import ScoreTable from "./Table";
 import Button from "./Button";
 import IncrementButton from "../IncrementButton";
+import { getDatabase, ref, set } from "firebase/database";
+import { app as firebaseApp } from '../../firebase';
 import {
   TableContainer,
   Wrapper,
@@ -13,6 +15,7 @@ import {
   MessageContainer,
   StatusContainer,
 } from "./style";
+
 
 function ScoreBoard(props) {
   const [count, setCount] = useState(0);
@@ -24,6 +27,38 @@ function ScoreBoard(props) {
   console.log("Status: ", props.change);
   console.log("Counter: ", count);
 
+// Create a reference to the file we want to download
+// 
+const database = getDatabase(firebaseApp);
+
+function setData() {
+
+ set(ref(database, 'public/'), {
+  players: {
+    name: "Alicja",
+    age: 22,
+    description: "Hi, i like this",
+    points: props.change
+  },
+ }).then(() => {
+  alert("Twoje dane zostały zapisane")
+ })
+ .catch((error) => {
+  alert(error + "Nie zapisało się")
+ });
+
+}
+
+
+// Get the download URL
+// getDownloadURL(starsRef)
+//   .then((url) => {
+//     // Insert url into an <img> tag to "download"
+//   })
+//   .catch((error) => {
+//     alert(error)
+//   });
+  
   return (
     <TableContainer>
       <h1>ScoreBoard</h1>
@@ -42,6 +77,10 @@ function ScoreBoard(props) {
           <IncrementButton
             value="Zmniejsz o 1"
             onClick={() => setCount(count - 1)}
+          />
+          <IncrementButton
+            value="Zapisz"
+            onClick={() => setData()}
           />
         </Increment>
         <MessageContainer>
