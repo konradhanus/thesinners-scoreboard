@@ -21,6 +21,7 @@ export const Increment = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding-right: 6em;
 `;
 
 export const MessageContainer = styled.div`

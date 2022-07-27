@@ -16,6 +16,7 @@ import {
   MessageContainer,
   StatusContainer,
 } from "./style";
+import List from "../ItemList/List";
 
 function ScoreBoard(props) {
   const [count, setCount] = useState(0);
@@ -109,6 +110,34 @@ function ScoreBoard(props) {
           })}
         </MessageContainer>
       </Wrapper>
+      {/* <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-around",
+          alignItems: "center",
+          alignContent: "center",
+          backgroundColor: "gray",
+          width: "20%"
+        }}
+      >
+        <div style={{ width: "20%", height: "50%", backgroundColor: "red", textAlign: "center", margin: 20}}>
+          <p>siema</p>
+        </div>
+        <div style={{ width: "20%", height: "50%", backgroundColor: "red", textAlign: "center", margin: 20}}>
+          <p>siema</p>
+        </div>
+        <div style={{ width: "20%", height: "50%", backgroundColor: "red", textAlign: "center", margin: 20}}>
+          <p>siema</p>
+        </div>
+        <div style={{ width: "20%", height: "50%", backgroundColor: "red", textAlign: "center", margin: 20}}>
+          <p>siema</p>
+        </div>
+        <div style={{ width: "20%", height: "50%", backgroundColor: "red", textAlign: "center", margin: 20}}>
+          <p>siema</p>
+        </div>
+      </div> */}
+      <List />
     </TableContainer>
   );
 }
