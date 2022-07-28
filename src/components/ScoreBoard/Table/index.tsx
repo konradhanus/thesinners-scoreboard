@@ -32,7 +32,23 @@ const TableTitle = (props: information) => {
 
 const date = new Date().toLocaleTimeString();
 
-function ScoreTable(props: any) {
+
+
+function ScoreTable(props: {players: any}) {
+
+  const scoreData = props.players ? Object.keys(props.players).map((key) => {
+
+    const p = props.players[key].player;
+    
+    return ({
+          title: "untitled",
+          name: p.name && p.name,
+          status: "nothing",
+          points: p.name && p.points,
+          value: "0",
+        })
+   }) : [];
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="table">
@@ -53,7 +69,9 @@ function ScoreTable(props: any) {
               <TableCell align="right">{row.title}</TableCell>
               <TableCell align="right">{row.name}</TableCell>
               <TableCell align="right">{date}</TableCell>
-              <TableCell align="right">{props.change}</TableCell>
+              <TableCell align="right">{row.points
+              // props.change
+            }</TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -20,7 +20,8 @@ import List from "../ItemList/List";
 
 function ScoreBoard(props) {
   const [count, setCount] = useState(0);
-
+  const [players, setPlayers] = useState([]);
+  
   const onClicked = (item) => {
     props.checkThis(item);
   };
@@ -64,14 +65,16 @@ function ScoreBoard(props) {
       alert("Gracze");
 
       console.log("gracze:", players, snapshot);
+      setPlayers(players[0])
 
       return <div>{players}</div>;
     });
   }
+  
   return (
     <TableContainer>
       <h1>ScoreBoard</h1>
-      <ScoreTable />
+      <ScoreTable players={players} />
       <Wrapper>
         <Increment>
           <IncrementButton
