@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { actionCreators } from "../action";
+import { actionCreators } from "./action";
 
 type OnClick = () => void;
 

@@ -1,27 +1,33 @@
 import React, { useState } from "react";
-import "./style.css";
 import { connect } from "react-redux";
-import { actionCreators } from "./action";
-import { scoreData } from "./scoreData";
-import ScoreTable from "./Table";
-import Button from "./Button";
-import IncrementButton from "../IncrementButton";
+import { actionCreators } from "../../Buttons/Button/action";
+import { scoreData } from "../Data/scoreData";
+import ScoreTable from ".";
+import Button from "../../Buttons/Button";
+import IncrementButton from "../../Buttons/IncrementButton";
 import { getDatabase, set, ref, get } from "firebase/database";
 import uuid from "react-uuid";
-import { app as firebaseApp } from "../../firebase";
+import { app as firebaseApp } from "../../../firebase";
+// import {
+//   TableContainer,
+//   Wrapper,
+//   Increment,
+//   MessageContainer,
+//   StatusContainer,
+// } from "./style";
 import {
   TableContainer,
+  IncrementButtons,
+  DataButtons,
+  StoreButtons,
   Wrapper,
-  Increment,
-  MessageContainer,
-  StatusContainer,
-} from "./style";
-import List from "../ItemList/List";
+} from "../Styles/tableStyles";
+import List from "../../ItemList/List/List";
 
 function ScoreBoard(props) {
   const [count, setCount] = useState(0);
   const [players, setPlayers] = useState([]);
-  
+
   const onClicked = (item) => {
     props.checkThis(item);
   };
@@ -64,19 +70,25 @@ function ScoreBoard(props) {
 
       alert("Gracze");
 
-      console.log("gracze:", players, snapshot);
-      setPlayers(players[0])
+      console.log("Gracze:", players, snapshot);
+      setPlayers(players[0]);
 
       return <div>{players}</div>;
     });
   }
-  
+
+  const heightScreen = window.innerHeight;
   return (
-    <TableContainer>
-      <h1>ScoreBoard</h1>
-      <ScoreTable players={players} />
+    <>
       <Wrapper>
-        <Increment>
+        {/* <TableContainer> */}
+        {
+          // tabelka z danymi:
+          /* <h1>ScoreBoard</h1>
+      <ScoreTable players={players} /> */
+        }
+        <List />
+        {/* <IncrementButtons>
           <IncrementButton
             value="Zwiększ o 1"
             onClick={() => setCount(count + 1)}
@@ -93,55 +105,28 @@ function ScoreBoard(props) {
             value="Zmniejsz o 1"
             onClick={() => setCount(count - 1)}
           />
+        </IncrementButtons>
+        <DataButtons>
           <IncrementButton value="Zapisz" onClick={() => setData()} />
           <IncrementButton value="Odczytaj" onClick={() => getData()} />
-        </Increment>
-        <MessageContainer>
+        </DataButtons>
+        <StoreButtons>
           {scoreData.map((item, key) => {
             return (
               <React.Fragment key={key}>
-                <StatusContainer>
-                  <Button
-                    value={item.value}
-                    checkThis
-                    change
-                    onClick={() => onClicked(item)}
-                  />
-                </StatusContainer>
+                <Button
+                  value={item.value}
+                  checkThis
+                  change
+                  onClick={() => onClicked(item)}
+                />
               </React.Fragment>
             );
           })}
-        </MessageContainer>
+        </StoreButtons> */}
+        {/* </TableContainer> */}
       </Wrapper>
-      {/* <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-around",
-          alignItems: "center",
-          alignContent: "center",
-          backgroundColor: "gray",
-          width: "20%"
-        }}
-      >
-        <div style={{ width: "20%", height: "50%", backgroundColor: "red", textAlign: "center", margin: 20}}>
-          <p>siema</p>
-        </div>
-        <div style={{ width: "20%", height: "50%", backgroundColor: "red", textAlign: "center", margin: 20}}>
-          <p>siema</p>
-        </div>
-        <div style={{ width: "20%", height: "50%", backgroundColor: "red", textAlign: "center", margin: 20}}>
-          <p>siema</p>
-        </div>
-        <div style={{ width: "20%", height: "50%", backgroundColor: "red", textAlign: "center", margin: 20}}>
-          <p>siema</p>
-        </div>
-        <div style={{ width: "20%", height: "50%", backgroundColor: "red", textAlign: "center", margin: 20}}>
-          <p>siema</p>
-        </div>
-      </div> */}
-      <List />
-    </TableContainer>
+    </>
   );
 }
 

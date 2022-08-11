@@ -6,21 +6,9 @@ import { TableContainer } from "@mui/material";
 import { TableHead } from "@mui/material";
 import { TableRow } from "@mui/material";
 import { Paper } from "@mui/material";
-import { scoreData } from "../scoreData";
+import { scoreData } from "../Data/scoreData";
 import { connect } from "react-redux";
-import { actionCreators } from "../action";
-
-// function createData(place: number, name: string, time: number, points: number) {
-//   return { place, name, time, points };
-// }
-
-// const rows = [
-//   createData(1, "Frozen yoghurt", 159, 6.0),
-//   createData(2, "Ice cream sandwich", 237, 9.0),
-//   createData(3, "Eclair", 262, 16.0),
-//   createData(4, "Cupcake", 305, 3.7),
-//   createData(5, "Gingerbread", 356, 16.0),
-// ];
+import { actionCreators } from "../../Buttons/Button/action";
 
 interface information {
   title: string;
@@ -44,7 +32,7 @@ function ScoreTable(props: {players: any}) {
           title: "untitled",
           name: p.name && p.name,
           status: "nothing",
-          points: p.name && p.points,
+          points: p.points && p.points,
           value: "0",
         })
    }) : [];

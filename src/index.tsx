@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import ScoreBoard from "./components/ScoreBoard";
+import ScoreBoard from "./components/ScoreBoard/Table/ScoreBoard";
 import reportWebVitals from "./reportWebVitals";
 import getStore from "./store";
 import "./index.css";
