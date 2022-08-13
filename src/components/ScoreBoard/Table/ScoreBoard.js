@@ -82,12 +82,14 @@ function ScoreBoard(props) {
     <>
       <Wrapper>
         {/* <TableContainer> */}
-        {
-          // tabelka z danymi:
-          /* <h1>ScoreBoard</h1>
-      <ScoreTable players={players} /> */
-        }
+        
+           {/* tabelka z danymi: */}
+           {/* <h1>ScoreBoard</h1>
+      <ScoreTable players={players} />  */}
+        
         <List />
+        {/* <IncrementButton value="Odczytaj" onClick={() => getData()} />
+        <IncrementButton value="Zapisz" onClick={() => setData()} /> */}
         {/* <IncrementButtons>
           <IncrementButton
             value="Zwiększ o 1"
@@ -107,8 +109,7 @@ function ScoreBoard(props) {
           />
         </IncrementButtons>
         <DataButtons>
-          <IncrementButton value="Zapisz" onClick={() => setData()} />
-          <IncrementButton value="Odczytaj" onClick={() => getData()} />
+          
         </DataButtons>
         <StoreButtons>
           {scoreData.map((item, key) => {
