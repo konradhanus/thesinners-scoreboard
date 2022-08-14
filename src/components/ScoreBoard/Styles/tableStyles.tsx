@@ -68,7 +68,7 @@ export const Link = styled.a`
   color: white;
 `;
 
-export const RankingContainer = styled.div`
+export const Ranking = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
