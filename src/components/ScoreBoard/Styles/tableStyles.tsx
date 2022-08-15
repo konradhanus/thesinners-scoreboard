@@ -62,7 +62,7 @@ export const Text = styled.p`
   color: white;
 `;
 
-export const Button = styled.button``;
+export const HeaderButton = styled.button``;
 
 export const Link = styled.a`
   color: white;
@@ -86,6 +86,9 @@ export const Table = styled.div`
   padding: 0;
   border-radius: 1vh;
   background-image: linear-gradient(to bottom, #abb8c3, #d9e3f0);
+`;
+
+export const TableTitle = styled.h1`
 `;
 
 export const Title = styled.div`
@@ -128,6 +131,8 @@ export const FirstBoxContainer = styled.div`
 `;
 
 export const IconWithPlace = styled.div``;
+
+export const Value = styled.h1``;
 
 export const AvatarWinners = styled.div`
   display: flex;

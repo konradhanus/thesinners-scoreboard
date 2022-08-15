@@ -23,6 +23,8 @@ import {
   Wrapper,
 } from "../Styles/tableStyles";
 import List from "../../ItemList/List/List";
+import temporaryAvatarImage from "../../../assets/avatarImage.png";
+import { listData } from "../../ItemList/List/listData";
 
 function ScoreBoard(props) {
   const [count, setCount] = useState(0);
@@ -42,10 +44,16 @@ function ScoreBoard(props) {
 
     set(ref(database, "public/" + "players/" + "/" + uuidKey), {
       player: {
-        name: "Alicja",
-        age: 22,
-        description: "Hi, i like this",
-        points: props.change,
+        
+        // name: "Alicja",
+        // age: 22,
+        // description: "Hi, i like this",
+        // points: props.change,
+        place: "10.",
+        avatar: "avatar",
+        name: "Regina",
+        level: "level 3",
+        points: 0,
       },
     })
       .then(() => {
@@ -83,14 +91,14 @@ function ScoreBoard(props) {
       <Wrapper>
         {/* <TableContainer> */}
         
-           {/* tabelka z danymi: */}
-           {/* <h1>ScoreBoard</h1>
-      <ScoreTable players={players} />  */}
+          
+            {/* <h1>ScoreBoard</h1> */}
+      {/* <ScoreTable />   */}
         
-        <List />
-        {/* <IncrementButton value="Odczytaj" onClick={() => getData()} />
+        <List/>
+       {/* <IncrementButton value="Odczytaj" onClick={() => getData()} /> 
         <IncrementButton value="Zapisz" onClick={() => setData()} /> */}
-        {/* <IncrementButtons>
+         {/* <IncrementButtons>
           <IncrementButton
             value="Zwiększ o 1"
             onClick={() => setCount(count + 1)}
@@ -110,8 +118,8 @@ function ScoreBoard(props) {
         </IncrementButtons>
         <DataButtons>
           
-        </DataButtons>
-        <StoreButtons>
+        </DataButtons> */}
+        {/* <StoreButtons>
           {scoreData.map((item, key) => {
             return (
               <React.Fragment key={key}>
@@ -124,7 +132,7 @@ function ScoreBoard(props) {
               </React.Fragment>
             );
           })}
-        </StoreButtons> */}
+        </StoreButtons>  */}
         {/* </TableContainer> */}
       </Wrapper>
     </>

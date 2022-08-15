@@ -1,8 +1,9 @@
-import * as React from "react";
 import {
   Box,
   FirstBoxContainer,
   IconWithPlace,
+  Value,
+  Avatar,
   AvatarWinners,
   SecondBoxContainer,
   NameWithPoints,
@@ -10,38 +11,106 @@ import {
   LevelContainer,
   Level,
 } from "../../../components/ScoreBoard/Styles/tableStyles";
+import { Winners } from "../../helpers/types";
+import temporaryAvatarImage from "../../../assets/avatarImage.png";
 
-const ListDataWinners = ({ icon, place, avatar, name, level, points }: any) => (
-  <React.Fragment>
-    <Box className="box">
-      <FirstBoxContainer>
-        <IconWithPlace>
-          {icon}
-          <h4 className="title is-6" style={{ minWidth: 40 }}>
-            {place}
-          </h4>
-        </IconWithPlace>
-      </FirstBoxContainer>
+function ListDataWinners(props: {players: any, isTelefon: boolean}) {
+
+  const listData = props.players ? Object.keys(props.players).map((key) => {
+
+    const p = props.players[key].player;
+    
+    return ({
+          // title: "untitled",
+          // name: p.name && p.name,
+          // status: "nothing",
+          // points: p.points && p.points,
+          // value: "0",
+          icon: p.icon && p.icon,
+          place: p.place && p.place,
+          avatar: p.avatar && p.avatar,
+          name: p.name && p.name,
+          level: p.level && p.level,
+          points: p.points && p.points,
+        })
+   }) : [];
+return (
+  <>
+  {props.isTelefon ? (
+    <>
+      {listData
+   .sort((p, m) => (p.points < m.points) ? 1 : -1)
+   .filter((best, index) => index < 10)
+   .map((row) => (
+  <Box className="box">
+    <FirstBoxContainer>
+      <IconWithPlace>
+        {row.icon}
+        <Value className="title is-6" style={{ minWidth: 40 }}>
+          {row.place}
+        </Value>
+      </IconWithPlace>
+    </FirstBoxContainer>
       <AvatarWinners>
-        <figure className="image">
-          <img className="is-rounded" src={avatar} alt="avatar" />
-        </figure>
-      </AvatarWinners>
-      <SecondBoxContainer>
-        <NameWithPoints>
-          {name}
-          <Points>
-            <h4 className="title is-6">{points}</h4>
-          </Points>
-        </NameWithPoints>
-        <LevelContainer className="box">
-          <Level className="box">
-            <p style={{ fontSize: 12 }}>{level}</p>
-          </Level>
-        </LevelContainer>
-      </SecondBoxContainer>
-    </Box>
-  </React.Fragment>
-);
+      <figure className="image">
+      <img className="is-rounded" src={temporaryAvatarImage} alt="avatar" />
+      </figure>
+    </AvatarWinners>
+    <SecondBoxContainer>
+      <NameWithPoints>
+        {row.name}
+        <Points>
+          <Value className="title is-6">{row.points}</Value>
+        </Points>
+      </NameWithPoints>
+      <LevelContainer className="box">
+        <Level className="box">
+          <Value style={{ fontSize: 12 }}>{row.level}</Value>
+        </Level>
+      </LevelContainer>
+    </SecondBoxContainer>
+  </Box>
+   ))}
+    </>
+  ) : (
+    <>
+    {listData
+ .sort((p, m) => (p.points < m.points) ? 1 : -1)
+ .filter((best, index) => index < 3)
+ .map((row) => (
+<Box className="box">
+  <FirstBoxContainer>
+    <IconWithPlace>
+      {row.icon}
+      <Value className="title is-6" style={{ minWidth: 40 }}>
+        {row.place}
+      </Value>
+    </IconWithPlace>
+  </FirstBoxContainer>
+    <AvatarWinners>
+    <figure className="image">
+    <img className="is-rounded" src={temporaryAvatarImage} alt="avatar" />
+    </figure>
+  </AvatarWinners>
+  <SecondBoxContainer>
+    <NameWithPoints>
+      {row.name}
+      <Points>
+        <Value className="title is-6">{row.points}</Value>
+      </Points>
+    </NameWithPoints>
+    <LevelContainer className="box">
+      <Level className="box">
+        <Value style={{ fontSize: 12 }}>{row.level}</Value>
+      </Level>
+    </LevelContainer>
+  </SecondBoxContainer>
+</Box>
+ ))}
+  </>
+  )}
+  </>
+)
+}
 
 export default ListDataWinners;
