@@ -88,8 +88,7 @@ export const Table = styled.div`
   background-image: linear-gradient(to bottom, #abb8c3, #d9e3f0);
 `;
 
-export const TableTitle = styled.h1`
-`;
+export const TableTitle = styled.h1``;
 
 export const Title = styled.div`
   text-transform: uppercase;
@@ -236,4 +235,10 @@ export const Level = styled.div`
   align-items: center;
   border-radius: 1vh;
   margin-right: 0vw;
+`;
+
+export const Buttons = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 4vh;
 `;
