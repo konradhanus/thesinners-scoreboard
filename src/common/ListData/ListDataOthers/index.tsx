@@ -10,6 +10,7 @@ import {
 } from "../../../components/ScoreBoard/Styles/tableStyles";
 import temporaryAvatarImage from "../../../assets/avatarImage.png";
 import { Others } from "../../helpers/types";
+import ModalData from "../../Modal";
 
 function ListDataOthers(props: Others) {
   const listData = props.players
@@ -64,6 +65,9 @@ function ListDataOthers(props: Others) {
             <SecondBoxContainer>
               <NameWithPoints>
                 {row.name}
+                <ModalData name={row.name}>
+                  <h1><strong>Profil</strong></h1>
+                </ModalData>
                 <Points>
                   <Value className="title is-6">{row.points}</Value>
                 </Points>
