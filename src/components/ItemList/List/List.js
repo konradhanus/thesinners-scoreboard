@@ -6,6 +6,8 @@ import ListWeb from "../../../common/ListWeb/index";
 export default function ItemList(isListMobile, isListWeb) {
   // const date = new Date().toLocaleTimeString();
 
+  const MOBILE_BR = 426;
+
   const [size, setSize] = useState({
     w: window.innerWidth,
     h: window.innerHeight,
@@ -26,7 +28,7 @@ export default function ItemList(isListMobile, isListWeb) {
 
   // console.log("Width is:", size.w);
 
-  if (size.w < 426) {
+  if (size.w < MOBILE_BR) {
     return <ListWeb isListMobile={isListMobile} />;
   }
 

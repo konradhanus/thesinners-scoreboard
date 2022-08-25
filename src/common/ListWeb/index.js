@@ -38,7 +38,7 @@ export default function ListWeb(props) {
       {props.isListWeb && (
         <ListWrapper>
           <ListHeader />
-          <Buttons>
+          <Buttons data-aos="fade-left">
             {/* <ButtonData value="Zapisz" onClick={setData} /> */}
             <ButtonData value="Pokaż Graczy" onClick={getData} />
           </Buttons>
@@ -50,7 +50,7 @@ export default function ListWeb(props) {
       {props.isListMobile && (
         <ListWrapper>
           <ListHeader />
-          <Buttons>
+          <Buttons data-aos="fade-left">
             {/* <ButtonData value="Zapisz" onClick={setData} /> */}
             <ButtonData value="Pokaż Graczy" onClick={getData} />
           </Buttons>

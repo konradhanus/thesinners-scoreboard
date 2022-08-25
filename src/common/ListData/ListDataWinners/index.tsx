@@ -10,8 +10,13 @@ import {
   LevelContainer,
   Level,
 } from "../../../components/ScoreBoard/Styles/tableStyles";
-import temporaryAvatarImage from "../../../assets/avatarImage.png";
 import { Winners } from "../../helpers/types";
+import { IconType } from "../../helpers/types";
+import { ImageData } from "../../../components/ItemList/List/listData";
+import { MAX_POINTS, PLACE } from "./Data";
+import Avatar from "../../Avatar";
+import Icon from "../../PlaceIcons";
+import displayIcon from "../../helpers/displayIcon";
 
 function ListDataWinners(props: Winners) {
   const listData = props.players
@@ -40,41 +45,55 @@ function ListDataWinners(props: Winners) {
           {listData
             .sort((p, m) => (p.points < m.points ? 1 : -1))
             .filter((best, index) => index < 20)
-            .map((row) => (
+            .map((player) => (
               <Box
                 className="box"
                 data-aos="fade-up"
                 data-aos-anchor="#example-anchor"
                 data-aos-duration="800"
-                key={row.name}
+                key={player.name}
               >
                 <FirstBoxContainer>
                   <IconWithPlace>
-                    {row.icon}
+                    {player.points >= MAX_POINTS &&
+                      player.place === PLACE[0] && (
+                        <Icon
+                          src={displayIcon(IconType.FirstPlace)}
+                          alt={ImageData.alt_First_Place}
+                        />
+                      )}
+                    {player.points < MAX_POINTS &&
+                      player.place === PLACE[1] && (
+                        <Icon
+                          src={displayIcon(IconType.SecondPlace)}
+                          alt={ImageData.alt_Second_Place}
+                        />
+                      )}
+                    {player.points < MAX_POINTS &&
+                      player.place === PLACE[2] && (
+                        <Icon
+                          src={displayIcon(IconType.ThirdPlace)}
+                          alt={ImageData.alt_Third_Place}
+                        />
+                      )}
                     <Value className="title is-6" style={{ minWidth: 40 }}>
-                      {row.place}
+                      {player.place}
                     </Value>
                   </IconWithPlace>
                 </FirstBoxContainer>
                 <AvatarWinners>
-                  <figure className="image">
-                    <img
-                      className="is-rounded"
-                      src={temporaryAvatarImage}
-                      alt="avatar"
-                    />
-                  </figure>
+                  <Avatar />
                 </AvatarWinners>
                 <SecondBoxContainer>
                   <NameWithPoints>
-                    {row.name}
+                    {player.name}
                     <Points>
-                      <Value className="title is-6">{row.points}</Value>
+                      <Value className="title is-6">{player.points}</Value>
                     </Points>
                   </NameWithPoints>
                   <LevelContainer className="box">
                     <Level className="box">
-                      <Value style={{ fontSize: 12 }}>{row.level}</Value>
+                      <Value style={{ fontSize: 12 }}>{player.level}</Value>
                     </Level>
                   </LevelContainer>
                 </SecondBoxContainer>
@@ -86,41 +105,55 @@ function ListDataWinners(props: Winners) {
           {listData
             .sort((p, m) => (p.points < m.points ? 1 : -1))
             .filter((best, index) => index < 3)
-            .map((row) => (
+            .map((player) => (
               <Box
                 className="box"
                 data-aos="fade-up"
                 data-aos-anchor="#example-anchor"
                 data-aos-duration="800"
-                key={row.name}
+                key={player.name}
               >
                 <FirstBoxContainer>
                   <IconWithPlace>
-                    {row.icon}
+                    {player.points >= MAX_POINTS &&
+                      player.place === PLACE[0] && (
+                        <Icon
+                          src={displayIcon(IconType.FirstPlace)}
+                          alt={ImageData.alt_First_Place}
+                        />
+                      )}
+                    {player.points < MAX_POINTS &&
+                      player.place === PLACE[1] && (
+                        <Icon
+                          src={displayIcon(IconType.SecondPlace)}
+                          alt={ImageData.alt_Second_Place}
+                        />
+                      )}
+                    {player.points < MAX_POINTS &&
+                      player.place === PLACE[2] && (
+                        <Icon
+                          src={displayIcon(IconType.ThirdPlace)}
+                          alt={ImageData.alt_Third_Place}
+                        />
+                      )}
                     <Value className="title is-6" style={{ minWidth: 40 }}>
-                      {row.place}
+                      {player.place}
                     </Value>
                   </IconWithPlace>
                 </FirstBoxContainer>
                 <AvatarWinners>
-                  <figure className="image">
-                    <img
-                      className="is-rounded"
-                      src={temporaryAvatarImage}
-                      alt="avatar"
-                    />
-                  </figure>
+                  <Avatar />
                 </AvatarWinners>
                 <SecondBoxContainer>
                   <NameWithPoints>
-                    {row.name}
+                    {player.name}
                     <Points>
-                      <Value className="title is-6">{row.points}</Value>
+                      <Value className="title is-6">{player.points}</Value>
                     </Points>
                   </NameWithPoints>
                   <LevelContainer className="box">
                     <Level className="box">
-                      <Value style={{ fontSize: 12 }}>{row.level}</Value>
+                      <Value style={{ fontSize: 12 }}>{player.level}</Value>
                     </Level>
                   </LevelContainer>
                 </SecondBoxContainer>

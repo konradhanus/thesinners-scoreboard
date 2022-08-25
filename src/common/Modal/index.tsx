@@ -1,47 +1,56 @@
-import * as React from "react";
-import { ReactElement } from "react";
-import { Button, Modal, Box } from "@mui/material";
-
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 300,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 2,
-};
-
-interface Data {
-  name: string;
-  children?: ReactElement;
-}
+import { useState } from "react";
+import { Button, Modal } from "@mui/material";
+import { style } from "./style";
+import { Data } from "../helpers/types";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import modalAvatarImage from "../../assets/modalAvatarImage.png";
 
 export default function ModalData(props: Data) {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [open, setOpen] = useState(false);
+  const modalOpen = () => setOpen(true);
+  const modalClose = () => setOpen(false);
 
   return (
-    <>
-      <Button onClick={handleOpen}>
+    <Typography component="div">
+      <Button onClick={modalOpen}>
         <p style={{ fontSize: "6pt", padding: 0 }}>Zobacz</p>
       </Button>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={modalClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <>
+        <Card
+          sx={style}
+          data-aos="fade-up"
+          data-aos-anchor="#example-anchor"
+          data-aos-duration="800"
+        >
+          <CardMedia
+            component="img"
+            alt="modalAvatar"
+            height="140"
+            image={modalAvatarImage}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h6" component="div">
+              {props.place} {props.name}
+            </Typography>
+            <Typography
+              gutterBottom
+              component="div"
+              style={{ display: "flex", justifyContent: "flex-end" }}
+            >
+              Punkty: {props.points}
+            </Typography>
             {props.children}
-            Witaj {props.name}
-          </>
-        </Box>
+          </CardContent>
+        </Card>
       </Modal>
-    </>
+    </Typography>
   );
 }

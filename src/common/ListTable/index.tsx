@@ -1,4 +1,5 @@
 import { HeaderData } from "../../components/ItemList/List/listData";
+import { ListTableProps } from "../helpers/types";
 import {
   Ranking,
   Table,
@@ -6,7 +7,7 @@ import {
   TableTitle,
 } from "../../components/ScoreBoard/Styles/tableStyles";
 
-export default function ListTable(props: any) {
+export default function ListTable(props: ListTableProps) {
   return (
     <Ranking
       data-aos="fade-left"
