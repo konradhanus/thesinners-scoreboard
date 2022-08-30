@@ -1,7 +1,7 @@
-type OnClick = () => void;
+import React from 'react';
 
 interface ButtonDataProps {
-  onClick: OnClick;
+  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
   value: string;
 }
 

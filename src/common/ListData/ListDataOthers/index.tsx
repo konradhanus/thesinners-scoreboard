@@ -39,7 +39,7 @@ function ListDataOthers(props: Others) {
       {listData
         .sort((p, m) => (p.points < m.points ? 1 : -1))
         .filter((best, index) => index > 2)
-        .map((player) => (
+        .map((player, index) => (
           <Box
             className="box"
             data-aos="fade-up"
@@ -51,7 +51,7 @@ function ListDataOthers(props: Others) {
               <IconWithPlace>
                 {/* {player.icon} */}
                 <Value className="title is-6" style={{ minWidth: 40 }}>
-                  {player.place}
+                  {index+3}
                 </Value>
               </IconWithPlace>
             </FirstBoxContainer>
@@ -60,7 +60,7 @@ function ListDataOthers(props: Others) {
             </Avatar>
             <SecondBoxContainer>
               <NameWithPoints>
-                {player.name}
+                {player.name} aaaaa
                 <ModalData
                   name={player.name}
                   place={player.place}
