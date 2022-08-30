@@ -4,6 +4,7 @@ export interface Winners {
   players: any;
   isMobile: boolean;
   isFirst: boolean;
+  value: number;
 }
 
 export interface Others {

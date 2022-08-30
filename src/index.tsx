@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import ScoreBoard from "./components/ScoreBoard/Table/ScoreBoard";
+import DogRanking from "./components/ScoreBoard/Table/DogRanking";
 import reportWebVitals from "./reportWebVitals";
 import getStore from "./store";
 import "./index.css";
@@ -16,7 +16,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <CssBaseline />
-      <ScoreBoard />
+      <DogRanking />
     </Provider>
   </React.StrictMode>
 );

@@ -240,7 +240,7 @@ export const Level = styled.div`
 export const Buttons = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 4vh;
+  margin: 1.5vh;
 `;
 
 export const Image = styled.img`

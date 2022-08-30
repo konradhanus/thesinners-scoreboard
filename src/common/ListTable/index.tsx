@@ -10,7 +10,7 @@ import {
 export default function ListTable(props: ListTableProps) {
   return (
     <Ranking
-      data-aos="fade-left"
+      data-aos="flip-down"
       data-aos-anchor="#example-anchor"
       data-aos-offset="500"
       data-aos-duration="500"

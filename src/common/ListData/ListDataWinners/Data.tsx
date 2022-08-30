@@ -7,6 +7,9 @@ export enum PLACE {
 
 export const PLACE_AFFIX = [ 'st', 'nd', 'rd'];
 
+
+// sum of all values, then player points equal to the sum, next to divide of sum
+
 export const LEVELS = 
 [
     {

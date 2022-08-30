@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   ListWrapper,
   Buttons,
@@ -10,7 +10,6 @@ import { app as firebaseApp } from "../../firebase";
 import ListTable from "../ListTable";
 import ListDataOthers from "../ListData/ListDataOthers";
 // import setData from "../helpers/setData";
-import ButtonData from "../../components/Buttons/ButtonData";
 
 export default function ListWeb(props) {
   const database = getDatabase(firebaseApp);
@@ -24,14 +23,13 @@ export default function ListWeb(props) {
       snapshot.forEach((childSnapshot) => {
         players.push(childSnapshot.val());
       });
-
-      // alert("Gracze");
-
-      console.log("Gracze:", players, snapshot);
-      // console.log(setData);
       setPlayers(players[0]);
     });
   }
+
+  useEffect(() => {
+    getData();
+  });
 
   return (
     <>
@@ -40,7 +38,6 @@ export default function ListWeb(props) {
           <ListHeader />
           <Buttons data-aos="fade-left">
             {/* <ButtonData value="Zapisz" onClick={setData} /> */}
-            <ButtonData value="Pokaż Graczy" onClick={getData} />
           </Buttons>
           <ListTable>
             <ListDataWinners isMobile={true} players={players} />
@@ -52,7 +49,6 @@ export default function ListWeb(props) {
           <ListHeader />
           <Buttons data-aos="fade-left">
             {/* <ButtonData value="Zapisz" onClick={setData} /> */}
-            <ButtonData value="Pokaż Graczy" onClick={getData} />
           </Buttons>
           <ListTable>
             <ListDataWinners isMobile={false} players={players} />
