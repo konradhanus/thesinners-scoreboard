@@ -10,11 +10,12 @@ import {
   Level,
   LevelContainer,
 } from "../../../components/ScoreBoard/Styles/tableStyles";
-import { PLACE } from "../ListDataWinners/Data";
+import { LEVELS, PLACE } from "../ListDataWinners/Data";
 import { Others } from "../../helpers/types";
 import AvatarMobile from "../../Avatar";
 import ModalData from "../../Modal";
 import getLevel from "../../helpers/getLevel";
+import { ReactElement } from "react";
 
 function ListDataOthers(props: Others) {
   const listData = props.players
@@ -22,11 +23,6 @@ function ListDataOthers(props: Others) {
         const p = props.players[key].player;
 
         return {
-          // title: "untitled",
-          // name: p.name && p.name,
-          // status: "nothing",
-          // points: p.points && p.points,
-          // value: "0",
           icon: p.icon && p.icon,
           place: p.place && p.place,
           avatar: p.avatar && p.avatar,
@@ -36,6 +32,7 @@ function ListDataOthers(props: Others) {
         };
       })
     : [];
+
   return (
     <>
       {listData
@@ -43,6 +40,35 @@ function ListDataOthers(props: Others) {
         .filter((best, index) => index > 2)
         .map((player, place) => {
           const id = place + 1;
+
+          const EXPERIENCE = (
+            <>
+              {" "}
+              EXP {player.points} / {LEVELS[getLevel(player.points)].value}{" "}
+            </>
+          );
+
+          const POSITION =
+            id === PLACE.first || id === PLACE.second || id === PLACE.third
+              ? id + 3
+              : id + 3;
+
+          const LEVEL =
+            (player.points / LEVELS[getLevel(player.points)].value) * 100;
+
+          const LEVEL_MOBILE = lessPoints(getLevel(player.points));
+
+          function lessPoints(points: number): ReactElement {
+            if (player.points > 500) {
+              return (
+                <div style={{ fontSize: 12 }}>
+                  Level {getLevel(player.points)}
+                </div>
+              );
+            }
+            return <></>;
+          }
+
           return (
             <Box
               className="box"
@@ -53,13 +79,8 @@ function ListDataOthers(props: Others) {
             >
               <FirstBoxContainer>
                 <IconWithPlace>
-                  {/* {player.icon} */}
                   <Value className="title is-6" style={{ minWidth: 40 }}>
-                    {id === PLACE.first ||
-                    id === PLACE.second ||
-                    id === PLACE.third
-                      ? id + 3
-                      : id + 3}
+                    {POSITION}
                   </Value>
                 </IconWithPlace>
               </FirstBoxContainer>
@@ -73,12 +94,11 @@ function ListDataOthers(props: Others) {
                     name={player.name}
                     place={player.place}
                     points={player.points}
+                    exp={EXPERIENCE}
                   >
                     <LevelContainer className="box">
-                      <Level className="box">
-                        <Value style={{ fontSize: 12 }}>
-                          {getLevel(player.points)}
-                        </Value>
+                      <Level className="box" value={LEVEL}>
+                        <Value style={{ fontSize: 12 }}>{LEVEL_MOBILE}</Value>
                       </Level>
                     </LevelContainer>
                   </ModalData>

@@ -1,15 +1,11 @@
 import styled from "@emotion/styled";
-// import backgroundImage from "../../assets/backgroundImage.png";
+import { LevelProps, ExpProps } from "../../../common/helpers/types";
 
 export const Wrapper = styled.div`
   background-image: linear-gradient(to top, #59b989, #019cad);
   width: 100%;
   height: 100%;
 `;
-
-// export const Wrapper = styled.div`
-//  background-image: url(${backgroundImage});
-// `;
 
 export const TableContainer = styled.div`
   justify-content: center;
@@ -117,7 +113,6 @@ export const Box = styled.div`
     padding-bottom: 1vh;
   }
 `;
-// background: green;
 
 export const FirstBoxContainer = styled.div`
   display: flex;
@@ -159,9 +154,19 @@ export const Avatar = styled.div`
   }
 `;
 
-// @media (max-width: 425px) {
-//   margin-top: 0.5vh;
-// }
+export const LevelInfo = styled.div`
+  background: lime;
+  width: 25px;
+  height: 25px;
+  border-radius: 9999px;
+  z-index: 99;
+  margin-top: 27px;
+  margin-left: -20px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  justify-content: center;
+`;
 
 export const SecondBoxContainer = styled.div`
   display: flex;
@@ -181,6 +186,13 @@ export const NameWithPoints = styled.div`
   justify-content: flex-start;
   align-content: center;
   align-items: center;
+`;
+
+export const Experience = styled.p<ExpProps>`
+  color: red;
+  text-align: center;
+  font-size: ${(props) => props.size};
+  font-weight: bold;
 `;
 
 export const Points = styled.div`
@@ -204,7 +216,7 @@ export const LevelContainer = styled.div`
   flex-direction: row;
   padding: 0;
   width: 95%;
-  height: 30%;
+  height: 1.5vh;
   background: gray;
   justify-items: flex-start;
   justify-content: flex-start;
@@ -222,23 +234,18 @@ export const LevelContainer = styled.div`
   }
 `;
 
-interface Props {
-  value?: number;
-}
-
-export const Level = styled.div<Props>`
+export const Level = styled.div<LevelProps>`
   display: flex;
   flex-direction: row;
-  padding: 0;
-  width: ${props => props.value ? props.value : 0}%;
-  height: 25px;
+  padding: 0vh;
+  width: ${(props) => (props.value ? props.value : 0)}%;
+  height: 1.5vh;
   background: lime;
   justify-items: center;
   justify-content: center;
   align-content: center;
   align-items: center;
   border-radius: 1vh;
-  margin-right: 0vw;
 `;
 
 export const Buttons = styled.div`

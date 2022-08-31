@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Experience } from "../../components/ScoreBoard/Styles/tableStyles";
 import { Button, Modal } from "@mui/material";
 import { style } from "./style";
 import { Data } from "../helpers/types";
@@ -41,11 +42,19 @@ export default function ModalData(props: Data) {
               {props.place} {props.name}
             </Typography>
             <Typography
-              gutterBottom
               component="div"
-              style={{ display: "flex", justifyContent: "flex-end" }}
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                alignContent: "space-between",
+              }}
             >
-              Punkty: {props.points}
+              <Experience size={"12pt"}>{props.exp}</Experience>
+              <Typography gutterBottom component="div" style={{}}>
+                Punkty: {props.points}
+              </Typography>
             </Typography>
             {props.children}
           </CardContent>

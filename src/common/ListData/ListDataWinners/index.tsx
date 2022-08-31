@@ -4,8 +4,10 @@ import {
   IconWithPlace,
   Value,
   AvatarWinners,
+  LevelInfo,
   SecondBoxContainer,
   NameWithPoints,
+  Experience,
   Points,
   LevelContainer,
   Level,
@@ -25,11 +27,6 @@ function ListDataWinners(props: Winners) {
         const p = props.players[key].player;
 
         return {
-          // title: "untitled",
-          // name: p.name && p.name,
-          // status: "nothing",
-          // points: p.points && p.points,
-          // value: "0",
           icon: p.icon && p.icon,
           place: p.place && p.place,
           avatar: p.avatar && p.avatar,
@@ -52,12 +49,6 @@ function ListDataWinners(props: Winners) {
             .filter((best, index) => index < 20)
             .map((player, place) => {
               const id = place + 1;
-
-              const valueLen = LEVELS.reduce(
-                (total, totalOf) => (total = total + totalOf.value),
-                0
-              );
-
               return (
                 <Box
                   className="box"
@@ -98,20 +89,9 @@ function ListDataWinners(props: Winners) {
                     </IconWithPlace>
                   </FirstBoxContainer>
                   <AvatarWinners>
-                   <Avatar /> 
+                    <Avatar />
                   </AvatarWinners>
-                  <div style={{
-                    backgroundColor:"lime", 
-                    width: 30,
-                    height: 30, 
-                    borderRadius: 9999, 
-                    zIndex: 99, 
-                    marginTop: 25, 
-                    marginLeft: -20,
-                    display: 'flex',
-                    alignItems: 'center',
-                    fontWeight: 'bold',
-                    justifyContent: 'center'}}>{getLevel(player.points)}</div>
+                  <LevelInfo>{getLevel(player.points)}</LevelInfo>
                   <SecondBoxContainer>
                     <NameWithPoints>
                       {player.name}
@@ -119,16 +99,20 @@ function ListDataWinners(props: Winners) {
                         <Value className="title is-6">{player.points}</Value>
                       </Points>
                     </NameWithPoints>
-                    <p style={{ color: "red", textAlign: "center" }}>
-                      <b>
-                       {<> EXP {player.points} / {LEVELS[getLevel(player.points)].value}</>} <br></br>
-                      </b>
-                    </p>
+                    <Experience size={"10pt"}>
+                      EXP {player.points} /{" "}
+                      {LEVELS[getLevel(player.points)].value}
+                    </Experience>
                     <LevelContainer className="box">
-                      {/* {player.points ===  } */}
-                      <Level className="box" value={(player.points/LEVELS[getLevel(player.points)].value)*100}>
-                        <Value style={{ fontSize: 12 }}>
-                        </Value>
+                      <Level
+                        className="box"
+                        value={
+                          (player.points /
+                            LEVELS[getLevel(player.points)].value) *
+                          100
+                        }
+                      >
+                        <Value style={{ fontSize: 12 }}></Value>
                       </Level>
                     </LevelContainer>
                   </SecondBoxContainer>
@@ -185,6 +169,7 @@ function ListDataWinners(props: Winners) {
                   <AvatarWinners>
                     <Avatar />
                   </AvatarWinners>
+                  <LevelInfo>{getLevel(player.points)}</LevelInfo>
                   <SecondBoxContainer>
                     <NameWithPoints>
                       {player.name}
@@ -192,11 +177,20 @@ function ListDataWinners(props: Winners) {
                         <Value className="title is-6">{player.points}</Value>
                       </Points>
                     </NameWithPoints>
+                    <Experience size={"8pt"}>
+                      EXP {player.points} /{" "}
+                      {LEVELS[getLevel(player.points)].value}
+                    </Experience>
                     <LevelContainer className="box">
-                      <Level className="box">
-                        <Value style={{ fontSize: 12 }}>
-                          {getLevel(player.points)}
-                        </Value>
+                      <Level
+                        className="box"
+                        value={
+                          (player.points /
+                            LEVELS[getLevel(player.points)].value) *
+                          100
+                        }
+                      >
+                        <Value style={{ fontSize: 12 }}></Value>
                       </Level>
                     </LevelContainer>
                   </SecondBoxContainer>

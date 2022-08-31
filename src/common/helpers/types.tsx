@@ -15,6 +15,7 @@ export interface Data {
   place: number;
   points: number;
   name: string;
+  exp: ReactElement;
   children?: ReactElement;
 }
 
@@ -31,4 +32,12 @@ export interface ImageProps {
 
 export interface ListTableProps {
   children: ReactElement;
+}
+
+export interface LevelProps {
+  value?: number;
+}
+
+export interface ExpProps {
+  size: string;
 }
