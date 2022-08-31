@@ -5,7 +5,7 @@ import { app as firebaseApp } from "../../firebase";
 
 const database = getDatabase(firebaseApp);
 
-function setData() {
+function setData(): void {
   const uuidKey = uuid();
 
   set(ref(database, "public/" + "players/" + "/" + uuidKey), {

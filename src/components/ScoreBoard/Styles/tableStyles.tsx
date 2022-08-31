@@ -222,12 +222,16 @@ export const LevelContainer = styled.div`
   }
 `;
 
-export const Level = styled.div`
+interface Props {
+  value?: number;
+}
+
+export const Level = styled.div<Props>`
   display: flex;
   flex-direction: row;
   padding: 0;
-  width: 80%;
-  height: 100%;
+  width: ${props => props.value ? props.value : 0}%;
+  height: 25px;
   background: lime;
   justify-items: center;
   justify-content: center;

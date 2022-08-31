@@ -9,12 +9,7 @@ import {
 
 export default function ListTable(props: ListTableProps) {
   return (
-    <Ranking
-      data-aos="flip-down"
-      data-aos-anchor="#example-anchor"
-      data-aos-offset="500"
-      data-aos-duration="500"
-    >
+    <Ranking>
       <Table className="columns is-variable is-8-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
         <Title>
           <TableTitle className="title is-4">
