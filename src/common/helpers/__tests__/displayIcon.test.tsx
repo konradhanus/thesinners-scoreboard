@@ -4,7 +4,7 @@ describe('Testy dla funkcji displayIcon czy zwraca poprawne wartości', () => {
 
     test('First Place', () => {
       const displayIconReturnValue = displayIcon(IconType.FirstPlace);
-      console.log(displayIconReturnValue);
+      console.log("Ikona 1", displayIconReturnValue);
       expect(true).toBe(true);
     });
   
