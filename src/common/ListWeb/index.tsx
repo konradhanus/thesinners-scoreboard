@@ -9,16 +9,20 @@ import { getDatabase, ref, get } from "firebase/database";
 import { app as firebaseApp } from "../../firebase";
 import ListTable from "../ListTable";
 import ListDataOthers from "../ListData/ListDataOthers";
-// import setData from "../helpers/setData";
+import { Player } from '../helpers/types';
+interface ListProps {
+  isListWeb: boolean;
+  isListMobile: boolean;
+}
 
-export default function ListWeb(props) {
+export default function ListWeb(props: ListProps): JSX.Element {
   const database = getDatabase(firebaseApp);
 
-  const [players, setPlayers] = useState([]);
+  const [players, setPlayers] = useState<Player>();
 
   function getData() {
     get(ref(database, "public")).then((snapshot) => {
-      const players = [];
+      const players: Player[] = [];
 
       snapshot.forEach((childSnapshot) => {
         players.push(childSnapshot.val());
@@ -36,9 +40,6 @@ export default function ListWeb(props) {
       {props.isListWeb && (
         <ListWrapper>
           <ListHeader />
-          <Buttons data-aos="fade-left">
-            {/* <ButtonData value="Zapisz" onClick={setData} /> */}
-          </Buttons>
           <ListTable>
             <ListDataWinners isMobile={true} players={players} />
           </ListTable>
@@ -48,7 +49,6 @@ export default function ListWeb(props) {
         <ListWrapper>
           <ListHeader />
           <Buttons data-aos="fade-left">
-            {/* <ButtonData value="Zapisz" onClick={setData} /> */}
           </Buttons>
           <ListTable>
             <ListDataWinners isMobile={false} players={players} />

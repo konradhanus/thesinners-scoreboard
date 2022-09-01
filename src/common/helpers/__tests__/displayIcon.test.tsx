@@ -1,5 +1,5 @@
-import displayIcon from './common/helpers/displayIcon';
-import { IconType } from "./common/helpers/types";
+import displayIcon from '../displayIcon';
+import { IconType } from "../types";
 describe('Testy dla funkcji displayIcon czy zwraca poprawne wartości', () => {
 
     test('First Place', () => {

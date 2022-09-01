@@ -15,7 +15,6 @@ function setData(): void {
       name: "unknown",
       level: "level",
       points: 0,
-      // points: props.change,
     },
   })
     .then(() => {

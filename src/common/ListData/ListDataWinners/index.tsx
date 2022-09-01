@@ -12,7 +12,6 @@ import {
   LevelContainer,
   Level,
 } from "../../../components/ScoreBoard/Styles/tableStyles";
-import { Winners } from "../../helpers/types";
 import { IconType } from "../../helpers/types";
 import { ImageData } from "../../../components/ItemList/List/listData";
 import { LEVELS, PLACE, PLACE_AFFIX } from "./Data";
@@ -20,8 +19,17 @@ import Avatar from "../../Avatar";
 import Icon from "../../PlaceIcons";
 import displayIcon from "../../helpers/displayIcon";
 import getLevel from "../../helpers/getLevel";
+import {Player} from '../../helpers/types';
 
-function ListDataWinners(props: Winners) {
+export interface ListDataWinnersProps {
+  players: any;
+  isMobile: boolean;
+  isFirst?: boolean;
+  value?: number;
+}
+
+
+function ListDataWinners(props: ListDataWinnersProps): JSX.Element {
   const listData = props.players
     ? Object.keys(props.players).map((key) => {
         const p = props.players[key].player;
@@ -38,7 +46,7 @@ function ListDataWinners(props: Winners) {
     : [];
 
   if (props.players === null) {
-    return "Ładowanie...";
+    return <>"Ładowanie..."</>;
   }
   return (
     <>

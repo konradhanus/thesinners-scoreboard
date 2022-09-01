@@ -1,5 +1,4 @@
 import { HeaderData } from "../../components/ItemList/List/listData";
-import { ListTableProps } from "../helpers/types";
 import {
   Ranking,
   Table,
@@ -7,7 +6,11 @@ import {
   TableTitle,
 } from "../../components/ScoreBoard/Styles/tableStyles";
 
-export default function ListTable(props: ListTableProps) {
+export interface ListTableProps {
+  children: JSX.Element[] | JSX.Element;
+}
+
+export default function ListTable(props: ListTableProps) : JSX.Element {
   return (
     <Ranking>
       <Table className="columns is-variable is-8-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">

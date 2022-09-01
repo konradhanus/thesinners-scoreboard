@@ -6,7 +6,7 @@ import {
 import { HeaderData } from "../../components/ItemList/List/listData";
 import Button from "../../components/Buttons/HeaderButton";
 
-export default function ListHeader() {
+export default function ListHeader(): JSX.Element {
   return (
     <Header className="hero" data-aos="fade-right">
       <Content className="hero-body">

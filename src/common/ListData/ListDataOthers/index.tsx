@@ -11,13 +11,18 @@ import {
   LevelContainer,
 } from "../../../components/ScoreBoard/Styles/tableStyles";
 import { LEVELS, PLACE } from "../ListDataWinners/Data";
-import { Others } from "../../helpers/types";
 import AvatarMobile from "../../Avatar";
 import ModalData from "../../Modal";
 import getLevel from "../../helpers/getLevel";
 import { ReactElement } from "react";
+import {Player} from '../../helpers/types';
 
-function ListDataOthers(props: Others) {
+export interface OthersProps {
+  players: any;
+  isMobile: boolean;
+}
+
+function ListDataOthers(props: OthersProps): JSX.Element {
   const listData = props.players
     ? Object.keys(props.players).map((key) => {
         const p = props.players[key].player;

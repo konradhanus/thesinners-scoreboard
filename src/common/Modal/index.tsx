@@ -1,15 +1,22 @@
-import { useState } from "react";
+import { useState, ReactElement } from "react";
 import { Experience } from "../../components/ScoreBoard/Styles/tableStyles";
 import { Button, Modal } from "@mui/material";
 import { style } from "./style";
-import { Data } from "../helpers/types";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import modalAvatarImage from "../../assets/modalAvatarImage.png";
 
-export default function ModalData(props: Data) {
+export interface ModalDataProps {
+  place: number;
+  points: number;
+  name: string;
+  exp: ReactElement;
+  children?: ReactElement;
+}
+
+export default function ModalData(props: ModalDataProps) {
   const [open, setOpen] = useState(false);
   const modalOpen = () => setOpen(true);
   const modalClose = () => setOpen(false);

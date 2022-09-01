@@ -1,12 +1,17 @@
-export const MAX_POINTS = 1000;
+export const MAX_POINTS: number = 1000;
 export enum PLACE {
   first = 1,
   second = 2,
   third = 3,
 }
-export const PLACE_AFFIX = ["st", "nd", "rd"];
+export const PLACE_AFFIX: string[] = ["st", "nd", "rd"];
 
-export const LEVELS = [
+interface LEVEL {
+  id: number;
+  value: number;
+}
+
+export const LEVELS: LEVEL[] = [
   {
     id: 1,
     value: 0,
