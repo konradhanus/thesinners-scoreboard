@@ -15,7 +15,6 @@ import AvatarMobile from "../../Avatar";
 import ModalData from "../../Modal";
 import getLevel from "../../helpers/getLevel";
 import { ReactElement } from "react";
-import {Player} from '../../helpers/types';
 
 export interface OthersProps {
   players: any;
