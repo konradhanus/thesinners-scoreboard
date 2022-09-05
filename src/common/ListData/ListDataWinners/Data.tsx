@@ -408,4 +408,8 @@ export const LEVELS: LEVEL[] = [
     id: 99,
     value: 3520485254,
   },
+  {
+    id: 100,
+    value: 99999999999,
+  },
 ];
