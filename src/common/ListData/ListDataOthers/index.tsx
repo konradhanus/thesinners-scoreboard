@@ -1,3 +1,6 @@
+import AvatarMobile from "../../Avatar";
+import ModalData from "../../Modal";
+import getLevel from "../../helpers/getLevel";
 import {
   Box,
   FirstBoxContainer,
@@ -11,42 +14,18 @@ import {
   LevelContainer,
 } from "../../../components/ScoreBoard/Styles/tableStyles";
 import { LEVELS, PLACE } from "../ListDataWinners/Data";
-import AvatarMobile from "../../Avatar";
-import ModalData from "../../Modal";
-import getLevel from "../../helpers/getLevel";
-import { ReactElement } from "react";
+import { getPlayers } from "../../helpers/getPlayers";
+import { ListExperience } from "../../ListExperience";
+import { ListLevelMobile } from "../../ListLevelMobile";
 
 export interface OthersProps {
   players: any;
   isMobile: boolean;
 }
-
-// TO DO EXPORT IT and test it
-const fun = (props:any) => (key: any) => {
-    const p = props.players[key].player;
-
-    return {
-      icon: p.icon && p.icon,
-      place: p.place && p.place,
-      avatar: p.avatar && p.avatar,
-      name: p.name && p.name,
-      level: p.level && p.level,
-      points: p.points && p.points,
-    };
-  }
-
-// move to separate file
-          const EXPERIENCE = (player: any) => (
-            <>
-              {" "}
-              EXP {player.points} / {LEVELS[getLevel(player.points)].value}{" "}
-            </>
-          );
-
 // TO DO REFAKTOR
 function ListDataOthers(props: OthersProps): JSX.Element {
   const listData = props.players
-    ? Object.keys(props.players).map(fun(props))
+    ? Object.keys(props.players).map(getPlayers(props))
     : [];
 
   return (
@@ -57,8 +36,6 @@ function ListDataOthers(props: OthersProps): JSX.Element {
         .map((player, place) => {
           const id = place + 1;
 
-          
-
           const POSITION =
             id === PLACE.first || id === PLACE.second || id === PLACE.third
               ? id + 3
@@ -66,19 +43,6 @@ function ListDataOthers(props: OthersProps): JSX.Element {
 
           const LEVEL =
             (player.points / LEVELS[getLevel(player.points)].value) * 100;
-
-          const LEVEL_MOBILE = lessPoints(getLevel(player.points));
-
-          function lessPoints(points: number): ReactElement {
-            if (player.points > 500) {
-              return (
-                <div style={{ fontSize: 12 }}>
-                  Level {getLevel(player.points)}
-                </div>
-              );
-            }
-            return <></>;
-          }
 
           return (
             <Box
@@ -105,11 +69,13 @@ function ListDataOthers(props: OthersProps): JSX.Element {
                     name={player.name}
                     place={player.place}
                     points={player.points}
-                    exp={<EXPERIENCE player={player} />}
+                    exp={<ListExperience player={player} />}
                   >
                     <LevelContainer className="box">
                       <Level className="box" value={LEVEL}>
-                        <Value style={{ fontSize: 12 }}>{LEVEL_MOBILE}</Value>
+                        <Value style={{ fontSize: 12 }}>
+                          <ListLevelMobile player={player} />
+                        </Value>
                       </Level>
                     </LevelContainer>
                   </ModalData>

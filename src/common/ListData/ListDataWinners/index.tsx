@@ -1,3 +1,7 @@
+import Avatar from "../../Avatar";
+import Icon from "../../PlaceIcons";
+import displayIcon from "../../helpers/displayIcon";
+import getLevel from "../../helpers/getLevel";
 import {
   Box,
   FirstBoxContainer,
@@ -15,11 +19,7 @@ import {
 import { IconType } from "../../helpers/types";
 import { ImageData } from "../../../components/ItemList/List/listData";
 import { LEVELS, PLACE, PLACE_AFFIX } from "./Data";
-import Avatar from "../../Avatar";
-import Icon from "../../PlaceIcons";
-import displayIcon from "../../helpers/displayIcon";
-import getLevel from "../../helpers/getLevel";
-import {Player} from '../../helpers/types';
+import { getPlayers } from "../../helpers/getPlayers";
 
 export interface ListDataWinnersProps {
   players: any;
@@ -32,20 +32,8 @@ export interface ListDataWinnersProps {
 
 function ListDataWinners(props: ListDataWinnersProps): JSX.Element {
   const listData = props.players
-    ? Object.keys(props.players).map((key) => {
-        const p = props.players[key].player;
-
-        return {
-          icon: p.icon && p.icon,
-          place: p.place && p.place,
-          avatar: p.avatar && p.avatar,
-          name: p.name && p.name,
-          level: p.level && p.level,
-          points: p.points && p.points,
-        };
-      })
+    ? Object.keys(props.players).map(getPlayers(props))
     : [];
-
   if (props.players === null) {
     return <>"Ładowanie..."</>;
   }
