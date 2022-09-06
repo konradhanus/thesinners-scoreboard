@@ -10,6 +10,7 @@ export interface ListTableProps {
   children: JSX.Element[] | JSX.Element;
 }
 
+// TO DO READY FOR UNIT TEST
 export default function ListTable(props: ListTableProps) : JSX.Element {
   return (
     <Ranking>

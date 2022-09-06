@@ -1,3 +1,4 @@
+// TO DO MAKE INTERFACE FOR IT
 export const style = {
   position: "absolute" as "absolute",
   top: "50%",

@@ -21,20 +21,32 @@ export interface OthersProps {
   isMobile: boolean;
 }
 
+// TO DO EXPORT IT and test it
+const fun = (props:any) => (key: any) => {
+    const p = props.players[key].player;
+
+    return {
+      icon: p.icon && p.icon,
+      place: p.place && p.place,
+      avatar: p.avatar && p.avatar,
+      name: p.name && p.name,
+      level: p.level && p.level,
+      points: p.points && p.points,
+    };
+  }
+
+// move to separate file
+          const EXPERIENCE = (player: any) => (
+            <>
+              {" "}
+              EXP {player.points} / {LEVELS[getLevel(player.points)].value}{" "}
+            </>
+          );
+
+// TO DO REFAKTOR
 function ListDataOthers(props: OthersProps): JSX.Element {
   const listData = props.players
-    ? Object.keys(props.players).map((key) => {
-        const p = props.players[key].player;
-
-        return {
-          icon: p.icon && p.icon,
-          place: p.place && p.place,
-          avatar: p.avatar && p.avatar,
-          name: p.name && p.name,
-          level: p.level && p.level,
-          points: p.points && p.points,
-        };
-      })
+    ? Object.keys(props.players).map(fun(props))
     : [];
 
   return (
@@ -45,12 +57,7 @@ function ListDataOthers(props: OthersProps): JSX.Element {
         .map((player, place) => {
           const id = place + 1;
 
-          const EXPERIENCE = (
-            <>
-              {" "}
-              EXP {player.points} / {LEVELS[getLevel(player.points)].value}{" "}
-            </>
-          );
+          
 
           const POSITION =
             id === PLACE.first || id === PLACE.second || id === PLACE.third
@@ -98,7 +105,7 @@ function ListDataOthers(props: OthersProps): JSX.Element {
                     name={player.name}
                     place={player.place}
                     points={player.points}
-                    exp={EXPERIENCE}
+                    exp={<EXPERIENCE player={player} />}
                   >
                     <LevelContainer className="box">
                       <Level className="box" value={LEVEL}>

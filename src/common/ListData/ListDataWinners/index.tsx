@@ -28,6 +28,7 @@ export interface ListDataWinnersProps {
   value?: number;
 }
 
+// refaktor
 
 function ListDataWinners(props: ListDataWinnersProps): JSX.Element {
   const listData = props.players
