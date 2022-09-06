@@ -1,4 +1,15 @@
 // TO DO MAKE INTERFACE FOR IT
+// interface ModalStyle {
+//   position: string;
+//   top: string;
+//   bottom: string;
+//   left: string;
+//   width: string;
+//   bgcolor: string;
+//   border: string;
+//   p: number;
+// }
+
 export const style = {
   position: "absolute" as "absolute",
   top: "50%",
