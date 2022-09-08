@@ -1,7 +1,6 @@
 // TO DO test it
 export const getPlayers = (props: any) => (key: any) => {
   const p = props.players[key].player;
-
   return {
     icon: p.icon && p.icon,
     place: p.place && p.place,

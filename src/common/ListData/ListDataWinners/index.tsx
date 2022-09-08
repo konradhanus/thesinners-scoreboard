@@ -1,24 +1,9 @@
-import Avatar from "../../Avatar";
-import Icon from "../../PlaceIcons";
-import displayIcon from "../../helpers/displayIcon";
 import getLevel from "../../helpers/getLevel";
-import {
-  Box,
-  FirstBoxContainer,
-  IconWithPlace,
-  Value,
-  AvatarWinners,
-  LevelInfo,
-  SecondBoxContainer,
-  NameWithPoints,
-  Experience,
-  Points,
-  LevelContainer,
-  Level,
-} from "../../../components/ScoreBoard/Styles/tableStyles";
-import { IconType } from "../../helpers/types";
-import { ImageData } from "../../../components/ItemList/List/listData";
-import { LEVELS, PLACE, PLACE_AFFIX } from "./Data";
+import BoxContainer from "../../Box";
+import FirstContainer from "../../Box/FirstBoxContainer";
+import SecondContainer from "../../Box/SecondWinnersBox";
+import PlayerAvatar from "../../Box/PlayerAvatar";
+import { LevelInfo } from "../../../components/ScoreBoard/Styles/tableStyles";
 import { getPlayers } from "../../helpers/getPlayers";
 
 export interface ListDataWinnersProps {
@@ -27,8 +12,6 @@ export interface ListDataWinnersProps {
   isFirst?: boolean;
   value?: number;
 }
-
-// refaktor
 
 function ListDataWinners(props: ListDataWinnersProps): JSX.Element {
   const listData = props.players
@@ -44,76 +27,19 @@ function ListDataWinners(props: ListDataWinnersProps): JSX.Element {
           {listData
             .sort((p, m) => (p.points < m.points ? 1 : -1))
             .filter((best, index) => index < 20)
-            .map((player, place) => {
-              const id = place + 1;
+            .map((player, place: number) => {
               return (
-                <Box
-                  className="box"
-                  data-aos="fade-up"
-                  data-aos-anchor="#example-anchor"
-                  data-aos-duration="800"
-                  key={player.name}
-                >
-                  <FirstBoxContainer>
-                    <IconWithPlace>
-                      {id === PLACE.first && (
-                        <Icon
-                          src={displayIcon(IconType.FirstPlace)}
-                          alt={ImageData.alt_First_Place}
-                        />
-                      )}
-
-                      {id === PLACE.second && (
-                        <Icon
-                          src={displayIcon(IconType.SecondPlace)}
-                          alt={ImageData.alt_Second_Place}
-                        />
-                      )}
-                      {id === PLACE.third && (
-                        <Icon
-                          src={displayIcon(IconType.ThirdPlace)}
-                          alt={ImageData.alt_Third_Place}
-                        />
-                      )}
-
-                      <Value className="title is-6" style={{ minWidth: 40 }}>
-                        {id === PLACE.first ||
-                        id === PLACE.second ||
-                        id === PLACE.third
-                          ? `${id}${PLACE_AFFIX[id - 1]}`
-                          : id}
-                      </Value>
-                    </IconWithPlace>
-                  </FirstBoxContainer>
-                  <AvatarWinners>
-                    <Avatar />
-                  </AvatarWinners>
+                <BoxContainer key={player.name}>
+                  <FirstContainer isPositionMobile={false} place={place} />
+                  <PlayerAvatar isAvatarWinner={true} />
                   <LevelInfo>{getLevel(player.points)}</LevelInfo>
-                  <SecondBoxContainer>
-                    <NameWithPoints>
-                      {player.name}
-                      <Points>
-                        <Value className="title is-6">{player.points}</Value>
-                      </Points>
-                    </NameWithPoints>
-                    <Experience size={"10pt"}>
-                      EXP {player.points} /{" "}
-                      {LEVELS[getLevel(player.points)].value}
-                    </Experience>
-                    <LevelContainer className="box">
-                      <Level
-                        className="box"
-                        value={
-                          (player.points /
-                            LEVELS[getLevel(player.points)].value) *
-                          100
-                        }
-                      >
-                        <Value style={{ fontSize: 12 }}></Value>
-                      </Level>
-                    </LevelContainer>
-                  </SecondBoxContainer>
-                </Box>
+                  <SecondContainer
+                    name={player.name}
+                    points={player.points}
+                    player={player}
+                    size={"10pt"}
+                  />
+                </BoxContainer>
               );
             })}
         </>
@@ -122,76 +48,19 @@ function ListDataWinners(props: ListDataWinnersProps): JSX.Element {
           {listData
             .sort((p, m) => (p.points < m.points ? 1 : -1))
             .filter((best, index) => index < 3)
-            .map((player, place) => {
-              const id = place + 1;
+            .map((player, place: number) => {
               return (
-                <Box
-                  className="box"
-                  data-aos="fade-up"
-                  data-aos-anchor="#example-anchor"
-                  data-aos-duration="800"
-                  key={player.name}
-                >
-                  <FirstBoxContainer>
-                    <IconWithPlace>
-                      {id === PLACE.first && (
-                        <Icon
-                          src={displayIcon(IconType.FirstPlace)}
-                          alt={ImageData.alt_First_Place}
-                        />
-                      )}
-
-                      {id === PLACE.second && (
-                        <Icon
-                          src={displayIcon(IconType.SecondPlace)}
-                          alt={ImageData.alt_Second_Place}
-                        />
-                      )}
-                      {id === PLACE.third && (
-                        <Icon
-                          src={displayIcon(IconType.ThirdPlace)}
-                          alt={ImageData.alt_Third_Place}
-                        />
-                      )}
-
-                      <Value className="title is-6" style={{ minWidth: 40 }}>
-                        {id === PLACE.first ||
-                        id === PLACE.second ||
-                        id === PLACE.third
-                          ? `${id}${PLACE_AFFIX[id - 1]}`
-                          : id}
-                      </Value>
-                    </IconWithPlace>
-                  </FirstBoxContainer>
-                  <AvatarWinners>
-                    <Avatar />
-                  </AvatarWinners>
+                <BoxContainer key={player.name}>
+                  <FirstContainer isPositionMobile={false} place={place} />
+                  <PlayerAvatar isAvatarWinner={true} />
                   <LevelInfo>{getLevel(player.points)}</LevelInfo>
-                  <SecondBoxContainer>
-                    <NameWithPoints>
-                      {player.name}
-                      <Points>
-                        <Value className="title is-6">{player.points}</Value>
-                      </Points>
-                    </NameWithPoints>
-                    <Experience size={"8pt"}>
-                      EXP {player.points} /{" "}
-                      {LEVELS[getLevel(player.points)].value}
-                    </Experience>
-                    <LevelContainer className="box">
-                      <Level
-                        className="box"
-                        value={
-                          (player.points /
-                            LEVELS[getLevel(player.points)].value) *
-                          100
-                        }
-                      >
-                        <Value style={{ fontSize: 12 }}></Value>
-                      </Level>
-                    </LevelContainer>
-                  </SecondBoxContainer>
-                </Box>
+                  <SecondContainer
+                    name={player.name}
+                    points={player.points}
+                    player={player}
+                    size={"8pt"}
+                  />
+                </BoxContainer>
               );
             })}
         </>

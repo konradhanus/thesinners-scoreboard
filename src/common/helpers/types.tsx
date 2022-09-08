@@ -1,10 +1,10 @@
 export interface Player {
   icon: string;
-  place: string;
+  place: number;
   avatar: string;
   name: string;
   level: string;
-  points: string;
+  points: number;
 }
 
 export enum IconType {
