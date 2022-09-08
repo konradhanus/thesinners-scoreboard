@@ -7,6 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import modalAvatarImage from "../../assets/modalAvatarImage.png";
+import { SxProps } from '@mui/system/styleFunctionSx/styleFunctionSx';
 
 export interface ModalDataProps {
   place: number;
@@ -33,7 +34,7 @@ export default function ModalData(props: ModalDataProps) {
         aria-describedby="modal-modal-description"
       >
         <Card
-          sx={style}
+          sx={style as SxProps}
           data-aos="fade-up"
           data-aos-anchor="#example-anchor"
           data-aos-duration="800"

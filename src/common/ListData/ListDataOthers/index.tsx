@@ -1,6 +1,6 @@
 import AvatarMobile from "../../Avatar";
 import ModalData from "../../Modal";
-import getLevel from "../../helpers/getLevel";
+
 import {
   Box,
   FirstBoxContainer,
@@ -13,10 +13,12 @@ import {
   Level,
   LevelContainer,
 } from "../../../components/ScoreBoard/Styles/tableStyles";
-import { LEVELS, PLACE } from "../ListDataWinners/Data";
+
 import { getPlayers } from "../../helpers/getPlayers";
 import { ListExperience } from "../../ListExperience";
 import { ListLevelMobile } from "../../ListLevelMobile";
+import getLevelWidth from "../../helpers/getLevelWidth";
+import getPosition from "../../helpers/getPosition";
 
 export interface OthersProps {
   players: any;
@@ -33,17 +35,7 @@ function ListDataOthers(props: OthersProps): JSX.Element {
       {listData
         .sort((p, m) => (p.points < m.points ? 1 : -1))
         .filter((best, index) => index > 2)
-        .map((player, place) => {
-          const id = place + 1;
-
-          const POSITION =
-            id === PLACE.first || id === PLACE.second || id === PLACE.third
-              ? id + 3
-              : id + 3;
-
-          const LEVEL =
-            (player.points / LEVELS[getLevel(player.points)].value) * 100;
-
+        .map((player, place:number) => {
           return (
             <Box
               className="box"
@@ -55,7 +47,7 @@ function ListDataOthers(props: OthersProps): JSX.Element {
               <FirstBoxContainer>
                 <IconWithPlace>
                   <Value className="title is-6" style={{ minWidth: 40 }}>
-                    {POSITION}
+                    {getPosition(place)}
                   </Value>
                 </IconWithPlace>
               </FirstBoxContainer>
@@ -72,7 +64,7 @@ function ListDataOthers(props: OthersProps): JSX.Element {
                     exp={<ListExperience player={player} />}
                   >
                     <LevelContainer className="box">
-                      <Level className="box" value={LEVEL}>
+                      <Level className="box" value={getLevelWidth(player)}>
                         <Value style={{ fontSize: 12 }}>
                           <ListLevelMobile player={player} />
                         </Value>

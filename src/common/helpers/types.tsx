@@ -1,5 +1,3 @@
-import { ReactElement } from "react";
-
 export interface Player {
   icon: string;
   place: string;

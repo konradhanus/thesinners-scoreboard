@@ -1,5 +1,3 @@
-import * as React from "react";
-
 // TO DO test it
 export const getPlayers = (props: any) => (key: any) => {
   const p = props.players[key].player;
