@@ -35,7 +35,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "zip": "zip -r scoreboard.zip scoreboard",
+    "deploy": "rm -rf ./scoreboard && rm -rf ./scoreboard.zip && npm run build && mv build scoreboard && npm run zip && ftp -n < ./.env && curl http://reactblog.pl/unzip-scoreboard.php && rm -rf ./scoreboard && rm -rf ./scoreboard.zip"
   },
   "eslintConfig": {
     "extends": [

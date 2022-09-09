@@ -1,6 +1,6 @@
 export const HeaderData = {
-  title: "Welcome on Dog Ranking App",
-  subTitle: "Fight against other players and earn points to win.",
+  title: "SCOREBOARD THE SINNERS",
+  subTitle: "Smash them all",
   tableTitle: "Dog Ranking",
 };
 
