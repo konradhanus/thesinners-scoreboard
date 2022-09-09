@@ -1,7 +1,7 @@
 export const HeaderData = {
   title: "SCOREBOARD THE SINNERS",
   subTitle: "Smash them all",
-  tableTitle: "Dog Ranking",
+  tableTitle: "SCOREBOARD",
 };
 
 export const ImageData = {

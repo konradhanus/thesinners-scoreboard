@@ -17,14 +17,14 @@ export default function FirstContainer(props: FirstContainerProps) {
     <FirstBoxContainer>
       {props.isPositionMobile ? (
         <IconWithPlace>
-          <Value className="title is-6" style={{ minWidth: 40 }}>
+          <Value className="title is-6" style={{ minWidth: 40, fontSize: 18 }}>
             {getPositionMobile(props.place)}
           </Value>
         </IconWithPlace>
       ) : (
         <IconWithPlace>
           {getIcons(props.place)}
-          <Value className="title is-6" style={{ minWidth: 40 }}>
+          <Value className="title is-4" style={{ minWidth: 40 }}>
             {getPosition(props.place)}
           </Value>
         </IconWithPlace>

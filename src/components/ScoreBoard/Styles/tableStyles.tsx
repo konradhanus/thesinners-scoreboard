@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { LevelProps, ExpProps } from "../../../common/helpers/types";
 
 export const Wrapper = styled.div`
-  background-image: linear-gradient(to top, #59b989, #019cad);
+  background-image: url('http://thesinners.reactblog.pl/static/media/background.c8c7d37101cef601109e.png');
   width: 100%;
   height: 100%;
 `;
@@ -55,7 +55,9 @@ export const Header = styled.section`
 export const Content = styled.div``;
 
 export const Text = styled.p`
-  color: white;
+  color: #f3bf0c;
+  font-size: 40px;
+  font-family: Courier;
 `;
 
 export const HeaderButton = styled.button``;
@@ -84,7 +86,8 @@ export const Table = styled.div`
   background-image: linear-gradient(to bottom, #abb8c3, #d9e3f0);
 `;
 
-export const TableTitle = styled.h1``;
+export const TableTitle = styled.h1`
+font-family: Courier;`
 
 export const Title = styled.div`
   text-transform: uppercase;
@@ -126,7 +129,9 @@ export const FirstBoxContainer = styled.div`
 
 export const IconWithPlace = styled.div``;
 
-export const Value = styled.h1``;
+export const Value = styled.h1`
+font-family: Courier;
+`;
 
 export const AvatarWinners = styled.div`
   display: flex;
@@ -169,6 +174,9 @@ export const LevelInfo = styled.div`
 `;
 
 export const SecondBoxContainer = styled.div`
+  font-family: Courier;
+  text-transform: uppercase;
+  font-weight: bold;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -180,6 +188,7 @@ export const SecondBoxContainer = styled.div`
 `;
 
 export const NameWithPoints = styled.div`
+  font-size: 30px;
   display: flex;
   flex-direction: row;
   justify-items: center;

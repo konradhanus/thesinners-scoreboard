@@ -14,7 +14,7 @@ export default function ListHeader(): JSX.Element {
         <Text className="title">{HeaderData.title}</Text>
         <Text className="subtitle">{HeaderData.subTitle}</Text>
       </Content>
-      <Button value="Get Started!" />
+      <Button value="Play The Sinners" />
     </Header>
   );
 }

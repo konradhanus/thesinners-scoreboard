@@ -10,7 +10,7 @@ interface ButtonProps {
 const Button = (props: ButtonProps) => {
   return (
     <HeaderButton className="button is-danger">
-      <Link href="https://psiaapka.web.app" rel="noreferrer" target="_blank">
+      <Link href="http://thesinners.reactblog.pl" target="_blank">
         {props.value}
       </Link>
     </HeaderButton>

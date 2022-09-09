@@ -7,14 +7,14 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyATfXEGkJO-UXMWIdnyG7NBRn1OUUj69TM",
-  authDomain: "rankingdog.firebaseapp.com",
-  databaseURL: "https://rankingdog-default-rtdb.firebaseio.com",
-  projectId: "rankingdog",
-  storageBucket: "rankingdog.appspot.com",
-  messagingSenderId: "1035209169566",
-  appId: "1:1035209169566:web:23ae5c86e3148510f3f98f",
-  measurementId: "G-DG8JFVBP1V"
+  apiKey: "AIzaSyDi5Doz8XbItqfwwcF4RkfzovUY_rt6rOE",
+  authDomain: "scoreboardthesinners.firebaseapp.com",
+  databaseURL: "https://scoreboardthesinners-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "scoreboardthesinners",
+  storageBucket: "scoreboardthesinners.appspot.com",
+  messagingSenderId: "1022176421417",
+  appId: "1:1022176421417:web:0e32df5ca2db1ba580de38",
+  measurementId: "G-909XRZF7XT"
 };
 
 // Initialize Firebase

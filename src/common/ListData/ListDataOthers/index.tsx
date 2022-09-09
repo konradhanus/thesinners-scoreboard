@@ -23,7 +23,7 @@ function ListDataOthers(props: OthersProps): JSX.Element {
           return (
             <BoxContainer key={player.name}>
               <FirstContainer isPositionMobile={true} place={place} />
-              <PlayerAvatar isAvatarWinner={false}/>
+              {/* <PlayerAvatar isAvatarWinner={false}/> */}
               <SecondContainer
                 name={player.name}
                 place={player.place}

@@ -31,8 +31,8 @@ function ListDataWinners(props: ListDataWinnersProps): JSX.Element {
               return (
                 <BoxContainer key={player.name}>
                   <FirstContainer isPositionMobile={false} place={place} />
-                  <PlayerAvatar isAvatarWinner={true} />
-                  <LevelInfo>{getLevel(player.points)}</LevelInfo>
+                  {/* <PlayerAvatar isAvatarWinner={true} /> */}
+                  {/* <LevelInfo>{getLevel(player.points)}</LevelInfo> */}
                   <SecondContainer
                     name={player.name}
                     points={player.points}
@@ -52,8 +52,8 @@ function ListDataWinners(props: ListDataWinnersProps): JSX.Element {
               return (
                 <BoxContainer key={player.name}>
                   <FirstContainer isPositionMobile={false} place={place} />
-                  <PlayerAvatar isAvatarWinner={true} />
-                  <LevelInfo>{getLevel(player.points)}</LevelInfo>
+                  {/* <PlayerAvatar isAvatarWinner={true} /> */}
+                  {/* <LevelInfo>{getLevel(player.points)}</LevelInfo> */}
                   <SecondContainer
                     name={player.name}
                     points={player.points}

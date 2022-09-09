@@ -24,20 +24,6 @@ export default function SecondContainer(props: SecondContainerProps) {
     <SecondBoxContainer>
       <NameWithPoints>
         {props.name}
-        <ModalData
-          name={props.name}
-          place={props.place}
-          points={props.points}
-          exp={<>{getExpMobile(props.player)}</>}
-        >
-          <LevelContainer className="box">
-            <Level className="box" value={getLevelWidth(props.player)}>
-              <Value style={{ fontSize: 12 }}>
-                {getLevelValue(props.player)}
-              </Value>
-            </Level>
-          </LevelContainer>
-        </ModalData>
         <Points>
           <Value className="title is-6">{props.points}</Value>
         </Points>

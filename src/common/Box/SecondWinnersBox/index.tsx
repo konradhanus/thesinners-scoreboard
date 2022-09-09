@@ -25,15 +25,15 @@ export default function SecondContainer(props: SecondWinnersBoxProps) {
       <NameWithPoints>
         {props.name}
         <Points>
-          <Value className="title is-6">{props.points}</Value>
+          <Value className="title is-4">{props.points}</Value>
         </Points>
       </NameWithPoints>
-      <Experience size={props.size}>{getExpMobile(props.player)}</Experience>
-      <LevelContainer className="box">
+      {/* <Experience size={props.size}>{getExpMobile(props.player)}</Experience> */}
+      {/* <LevelContainer className="box">
         <Level className="box" value={getLevelWidth(props.player)}>
           <Value style={{ fontSize: 12 }}>{getLevelValue(props.player)}</Value>
         </Level>
-      </LevelContainer>
+      </LevelContainer> */}
     </SecondBoxContainer>
   );
 }
